@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 33% 98%;
+  --foreground: 225 35% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 225 35% 12%;
+  --primary: 188 95% 48%;
+  --primary-foreground: 222 47% 11%;
+  --secondary: 210 35% 94%;
+  --secondary-foreground: 225 35% 12%;
+  --muted: 210 32% 95%;
+  --muted-foreground: 225 12% 38%;
+  --accent: 188 95% 48%;
+  --accent-foreground: 222 47% 11%;
+  --border: 214 28% 88%;
+  --input: 214 28% 88%;
+  --ring: 188 95% 48%;
+  --radius: 1.25rem;
+}
+
+.dark {
+  --background: 224 42% 7%;
+  --foreground: 210 40% 96%;
+  --card: 222 33% 10%;
+  --card-foreground: 210 40% 96%;
+  --primary: 188 95% 60%;
+  --primary-foreground: 224 42% 7%;
+  --secondary: 223 24% 15%;
+  --secondary-foreground: 210 40% 96%;
+  --muted: 223 24% 13%;
+  --muted-foreground: 214 20% 70%;
+  --accent: 188 95% 60%;
+  --accent-foreground: 224 42% 7%;
+  --border: 220 20% 18%;
+  --input: 220 20% 18%;
+  --ring: 188 95% 60%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-foreground font-sans antialiased;
+  background-image:
+    radial-gradient(circle at top left, rgba(34, 211, 238, 0.16), transparent 28%),
+    radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.06), transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 24%);
+  min-height: 100vh;
+}
+
+* {
+  @apply border-border;
+}
+
+::selection {
+  background: hsl(var(--primary) / 0.18);
+}
+
+.skip-link {
+  @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground focus:outline-none;
+}
+
+.section-kicker {
+  @apply text-xs font-medium uppercase tracking-[0.28em] text-primary;
+}
+
+.section-title {
+  @apply font-display text-3xl font-semibold tracking-[-0.05em] text-foreground sm:text-4xl md:text-5xl;
+}
