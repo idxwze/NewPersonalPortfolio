@@ -87,39 +87,69 @@ export const projectItems: ProjectItem[] = [
   },
   {
     slug: "movie-recommender-system",
-    title: "Movie Recommender System",
-    shortTitle: "Movie Recommender",
-    summary: "Recommendation pipeline using sparse rating data, similarity scoring, clustering, and collaborative filtering to generate personalized movie suggestions.",
-    tags: ["Recommender Systems", "Machine Learning", "Data"],
-    tech: ["Python", "NumPy", "scikit-learn", "Surprise"],
-    image: "/images/movie-recommendation.jpg",
-    imageAlt: "Cinematic movie-themed visual for the recommender system project.",
-    heroEyebrow: "Recommendation system",
+    title: "Movie Recommendation Analysis Using The Movies Dataset",
+    shortTitle: "Movie Recommender System",
+    summary:
+      "Built and compared multiple recommendation approaches on The Movies Dataset, including content-based methods, clustering, and collaborative filtering with matrix factorization.",
+    tags: ["Recommender Systems", "Machine Learning", "Data Analysis"],
+    tech: ["Python", "pandas", "NumPy", "scikit-learn", "Matplotlib", "KaggleHub"],
+    image: "/images/movie-recommender-cover.png",
+    imageAlt: "Premium recommendation-systems cover showing a user-item signal matrix, ranked movie recommendations, and evaluation metrics.",
+    heroEyebrow: "CSI4142 Assignment 4",
     sections: [
       {
-        title: "Context",
+        title: "Overview",
         paragraphs: [
-          "Built as a practical recommendation system for learning how user-item data can be transformed into personalized ranking signals.",
-          "The project emphasized clean preprocessing, efficient matrix representation, and evaluation instead of only returning visually plausible suggestions."
+          "This notebook-based project explores movie recommendation from several angles: metadata similarity, clustering of movie attributes, content-based recommendation, and collaborative filtering with matrix factorization.",
+          "Using The Movies Dataset, the work moves from metadata exploration to user-rating-driven recommendation generation."
         ]
       },
       {
-        title: "Build",
+        title: "Methods",
         paragraphs: [
-          "Developed a recommendation pipeline over user-item rating data and engineered a sparse CSR utility matrix for memory-efficient modeling.",
-          "Compared content-aware similarity, clustering, and collaborative-filtering approaches, then used masked-entry validation by holding out known interactions."
+          "Cleaned movie metadata, extracted structured features, compared similarity measures across movie attributes, and ran KMeans and DBSCAN clustering on budget vs revenue and runtime vs popularity feature spaces.",
+          "Built a content-based recommendation setup with combined metadata heuristics, then implemented collaborative filtering with matrix factorization trained by SGD on ratings_small.csv."
         ],
         bullets: [
-          "Content-based filtering, clustering, and collaborative filtering",
-          "KMeans and DBSCAN for user and item segmentation",
-          "Cosine similarity, Jaccard similarity, SVD, MSE, Precision@k, and MRR"
+          "movie metadata + ratings ingestion → cleaning and preprocessing → exploratory analysis → similarity experiments → clustering experiments → content-based recommendation → collaborative filtering with matrix factorization → holdout evaluation → Top-N user recommendations",
+          "Used movies_metadata.csv, ratings_small.csv, and links_small.csv from The Movies Dataset",
+          "Compared latent dimensions k = 10 and k = 30 using RMSE and MAE"
         ]
       },
       {
-        title: "Takeaway",
+        title: "Results",
         paragraphs: [
-          "A focused recommender build grounded in evaluation, efficient matrix operations, and clear user-preference modeling."
+          "The final collaborative filtering model used k = 10, which slightly outperformed k = 30, and achieved RMSE = 0.9090 and MAE = 0.6997 on a 10 percent Gold Standard holdout.",
+          "The system generated personalized Top-10 recommendations for selected users, showing the difference between metadata-driven recommendation and user-rating-driven recommendation."
         ]
+      }
+    ],
+    highlights: [
+      "Built a multi-method recommendation project combining similarity analysis, clustering, content-based filtering, and collaborative filtering",
+      "Implemented matrix factorization with SGD and evaluated it using a 10 percent Gold Standard holdout, achieving RMSE 0.9090 and MAE 0.6997 with k = 10",
+      "Generated personalized Top-10 movie recommendations from real user ratings data and compared them against metadata-driven recommendation strategies"
+    ],
+    links: [
+      {
+        label: "Repository",
+        href: "https://github.com/idxwze/Movie-Recommendation-Analysis-Using-The-Movies-Dataset.git"
+      }
+    ],
+    supportingMedia: [
+      {
+        src: "/images/movie-recommender-evaluation.png",
+        alt: "Collaborative filtering evaluation comparing k equals 10 and k equals 30 with RMSE and MAE metrics.",
+        label: "Matrix factorization evaluation"
+      },
+      {
+        src: "/images/movie-recommender-top10.png",
+        alt: "Top-10 personalized movie recommendations for a selected user ranked by predicted rating.",
+        label: "Top-10 recommendation output"
+      },
+      {
+        src: "/images/movie-recommender-clustering.png",
+        alt: "KMeans clustering plot on budget and revenue features from The Movies Dataset.",
+        label: "KMeans clustering"
       }
     ]
   },
